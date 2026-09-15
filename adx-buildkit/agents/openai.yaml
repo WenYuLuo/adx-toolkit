@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADX Buildkite"
+  short_description: "Operate ADX Buildkite builds and Kubernetes acceptance"
+  default_prompt: "Use $adx-buildkit to verify and monitor the selected ADX commit through Buildkite Kubernetes acceptance."

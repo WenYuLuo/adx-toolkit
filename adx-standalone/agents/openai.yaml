@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADX Standalone"
+  short_description: "Deploy ADX processes and run local public SDK acceptance"
+  default_prompt: "Use $adx-standalone to deploy the selected ADX release and verify the requested local SDK workflow."

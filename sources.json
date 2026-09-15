@@ -1,0 +1,16 @@
+{
+  "recorded_on": "2026-09-15",
+  "product": {
+    "repository": "git@gitcode.com:robbluo/agent-dx.git",
+    "reference_commit": "0dde79ad57583e998389101a763e4d2d825be63e",
+    "files": ["AGENTS.md", "Makefile", "rust-toolchain.toml", "build/release/build.sh", "build/release/package.py", "build/e2e/run.py", "build/e2e/kubernetes/run.py", "build/e2e/preflight.py", "platform/control-plane/control-cli/src/main.rs", "platform/control-plane/control-cli/src/config.rs", ".buildkite/pipeline.yml", ".buildkite/README.md"]
+  },
+  "workflow_reference": "https://github.com/WenYuLuo/skills",
+  "acceptance": {
+    "url": "https://buildkite.com/agent-dx/agent-dx/builds/14",
+    "status_at_recording": "passed",
+    "scope": "Five public SDK scenarios and cleanup; two Kubernetes node Pods on one physical host",
+    "three_vm_validation": "not performed"
+  },
+  "usage": "Historical source pointers, not automatic runtime defaults. Recheck selected product commit, dependency pins and deployment identity on every execution."
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADX Three VMs"
+  short_description: "Deploy and validate ADX across three explicit Linux VMs"
+  default_prompt: "Use $adx-3vm to deploy one ADX release onto my three selected VMs and verify both workers."

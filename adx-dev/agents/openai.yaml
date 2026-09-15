@@ -1,0 +1,4 @@
+interface:
+  display_name: "ADX Development"
+  short_description: "Develop ADX with TDD, build caches and release evidence"
+  default_prompt: "Use $adx-dev to implement and validate a focused change in the selected ADX checkout."
