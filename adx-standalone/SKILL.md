@@ -9,6 +9,8 @@ First identify the requested topology: a persistent single-host process deployme
 
 Read [deployment and acceptance commands](references/runbook.md) for the selected mode. Use the chosen product checkout's current configs and drivers as the source of truth.
 
+For a Lima ARM64 host running Firecracker, read [Lima KVM preparation and runtime gates](references/lima-kvm.md). Verify real guest KVM operations before deployment; a Docker privileged flag or host hardware capability is insufficient.
+
 ## Before launch
 
 Record repo commit, package manifest/hash, architecture, SDK version, sandboxd revision, runtime image digest, backend socket and evidence directory. Use one coherent release; obtain missing artifacts through the repository build or CI rather than mixing unrelated binaries.

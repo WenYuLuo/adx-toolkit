@@ -1,13 +1,15 @@
 ---
 name: adx-3vm
-description: Prepare, deploy, validate or troubleshoot ADX process deployment on three explicitly selected Linux VMs, including local Lima hosts; use for one control node and two workers, cross-node routing and fault evidence, not cloud provisioning or Kubernetes Pods.
+description: Prepare, deploy, validate or troubleshoot ADX process deployment on three explicitly selected Linux VMs, including explicitly requested Lima KVM runtime preflight; use for one control node and two workers, cross-node routing and fault evidence, not cloud provisioning or Kubernetes Pods.
 ---
 
 # ADX Three VMs
 
-Use exactly three caller-selected VMs: one control node and two workers unless the user supplies a different role mapping. Record inventory, connection method and artifact identity before changing any node. Read [the three-VM procedure](references/runbook.md) and the selected product's current deployment contract.
+For full three-VM deployment, use three caller-selected VMs: one control node and two workers unless the user supplies a different role mapping. Record inventory, connection method and artifact identity before changing any node. Read [the three-VM procedure](references/runbook.md) and the selected product's current deployment contract.
 
 This skill supplies an operational contract, not an existing automated ADX three-VM harness. The baseline product contains local Docker and Kubernetes acceptance drivers; neither is a drop-in SSH/VM runner. If the request needs automation, build a scoped adapter around the public SDK assertions and existing `adxctl`, and verify it without changing those assertions to pass.
+
+For an explicitly requested single Lima VM or Firecracker/KVM environment preflight, read [Lima ARM64 KVM validation](references/lima-kvm.md). Reuse the installed Lima executable and recorded custom `LIMA_HOME`; absence from PATH does not mean Lima is missing. Provision only the requested topology.
 
 ## Runtime/build separation
 
