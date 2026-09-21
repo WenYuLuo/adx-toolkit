@@ -1,8 +1,9 @@
 {
   "recorded_on": "2026-09-21",
   "product": {
-    "repository": "git@gitcode.com:robbluo/agent-dx.git",
-    "reference_commit": "1a16d794428ef436f6d0da4a793f20e0d82a672c",
+    "repository": "git@gitcode.com:openJiuwen/agent-dx.git",
+    "branch": "refactor",
+    "reference_commit": "a512c7bd9657ddbbae401df41033707d329cde17",
     "files": ["AGENTS.md", "Makefile", "rust-toolchain.toml", "build/cache/cargo_cache.py", "build/release/build.sh", "build/release/package.py", "build/e2e/run.py", "build/e2e/kubernetes/run.py", "build/e2e/preflight.py", "docs/development/cargo-cache.md", "platform/control-plane/control-cli/src/main.rs", "platform/control-plane/control-cli/src/config.rs", ".buildkite/pipeline.yml", ".buildkite/README.md"]
   },
   "workflow_reference": "https://github.com/WenYuLuo/skills",
@@ -14,7 +15,7 @@
     "three_vm_validation": "not performed"
   },
   "local_validation": {
-    "commit": "1a16d794428ef436f6d0da4a793f20e0d82a672c",
+    "commit": "a512c7bd9657ddbbae401df41033707d329cde17",
     "cargo_cache_tests": "3 passed",
     "ci_runner_tests": "9 passed",
     "make_cache_contracts": "passed",
