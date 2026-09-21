@@ -39,7 +39,7 @@ $adx-buildkit 触发当前 ADX 提交的 Buildkite K8s 验收，检查每个用�
 
 ## 能力与证据
 
-基础来源为 ADX 提交 `0dde79ad57583e998389101a763e4d2d825be63e` 的实现及 Buildkite #14 验收，记录于 [sources.json](sources.json)。版本、分支、镜像、集群与凭证在执行时重新确认。
+当前产品实现指针为 ADX 提交 `1a16d794428ef436f6d0da4a793f20e0d82a672c`，记录于 [sources.json](sources.json)。Buildkite #14 验收对应此前的 `0dde79ad57583e998389101a763e4d2d825be63e`；本次多 worktree Cargo 缓存改动仅完成本地合同测试，不能继承该集成验收。版本、分支、镜像、集群与凭证在执行时重新确认。
 
 四个 skill 是操作工作流；创建本仓库不等于运行了一轮新的 ADX 集成测试。尤其 `adx-3vm` 是进程部署与验收契约，尚无 ADX 专用的自动三 VM 驱动或三 VM 通过记录。不得用本地双容器、K8s 两 Pod 或 SDK Socket 测试替代三 VM 证据。
 

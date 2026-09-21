@@ -13,10 +13,27 @@ At the recorded baseline Rust is 1.95.0, the Go module requires 1.24.1+, CI uses
 
 Choose existing compatible caches. In automation persist Cargo downloads/git state, target outputs, GOCACHE and GOMODCACHE; separate incompatible targets/toolchains and serialize writers that assemble release binaries. Do not use `cargo clean` as a routine retry.
 
+Current checkouts with `build/cache/cargo_cache.py` resolve all Git worktrees to a shared target bucket keyed by Rust host and version. The Makefile disables Cargo incremental for this shared mode, automatically uses sccache when installed, and caps sccache at 20 GiB. Inspect it before building:
+
 ```sh
-export CARGO_TARGET_DIR="$PWD/out/cache/cargo-target"
-export GOCACHE="$PWD/out/cache/go-build"
-export GOMODCACHE="$PWD/out/cache/go-mod"
+make cargo-cache-info
+eval "$(python3 build/cache/cargo_cache.py env --mode shared)"
+```
+
+Shared mode is suitable for build/check/test commands. Cargo serializes writers to the shared build directory; concurrent worktrees may wait. Do not rely on its unhashed `debug/` or `release/` binaries as durable branch-specific artifacts.
+
+Use an isolated target for a release, package assembly, a binary that will continue running, or concurrent worktree builds:
+
+```sh
+eval "$(python3 build/cache/cargo_cache.py env --mode isolated)"
+```
+
+`make platform-release` rejects the repository's default shared target. Explicit CI and caller-provided `CARGO_TARGET_DIR` values remain authoritative. For an older checkout without the helper, use a caller-owned target keyed by host/toolchain and keep different release writers isolated; do not invent or reuse a cache whose architecture, Rust version or ownership is unknown.
+
+```sh
+eval "$(python3 build/cache/cargo_cache.py env --mode shared)"
+export GOCACHE="$ADX_BUILD_CACHE_ROOT/go-build"
+export GOMODCACHE="$ADX_BUILD_CACHE_ROOT/go-mod"
 make build JOBS=2
 python3 build/ci/run.py rust --jobs 2 --output out/ci/rust-001
 python3 build/ci/run.py go --jobs 2 --output out/ci/go-001
@@ -34,6 +51,7 @@ Use a Python venv with the packages' declared dependencies. These are a menu, no
 Build natively outside the deployment nodes. Select actual existing Redis binary, target and venv paths:
 
 ```sh
+eval "$(python3 build/cache/cargo_cache.py env --mode isolated)"
 export ADX_REDIS_SERVER=/path/to/pinned/redis-server
 export ADX_RELEASE_TARGET=x86_64-unknown-linux-gnu
 export ADX_RELEASE_OUTPUT="$PWD/out/release/package-001"
